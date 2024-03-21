@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<SettingsStruct xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Count>10</Count>
+  <CurrentDataType>дробные</CurrentDataType>
+  <CurrentSortType>Расчёска</CurrentSortType>
+</SettingsStruct>
