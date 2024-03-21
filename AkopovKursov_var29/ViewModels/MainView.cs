@@ -270,9 +270,7 @@ namespace AkopovKursov_var29.ViewModels
             GenerateCommand = new DelegateCommand(OnGenerateCommand);//привязываем кнопку генерации
             OpenLogCommand = new DelegateCommand(OnOpenLogCommand);//привязываем меню открыть лог
             DeleteLogCommand = new DelegateCommand(OnDeleteLogCommand);//привязываем меню удалить лог
-
         }
-
 
     }
 }

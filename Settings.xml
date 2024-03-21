@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <SettingsStruct xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <Count>100</Count>
-  <CurrentDataType>строки</CurrentDataType>
+  <Count>1000</Count>
+  <CurrentDataType>целые</CurrentDataType>
   <CurrentSortType>Расчёска</CurrentSortType>
 </SettingsStruct>

@@ -38,7 +38,7 @@ namespace AkopovKursov_var29.Models
                 if (gap > 1)
                 {
                     gap = (int)(gap / factor);
-                    ReportProgress(++currentProgress * 100 / maxProgress);//прогресс в %
+                    ReportProgress?.Invoke(++currentProgress * 100 / maxProgress);//прогресс в %
                 }
 
                 for (int i = 0; i + gap < array.Length; i++)

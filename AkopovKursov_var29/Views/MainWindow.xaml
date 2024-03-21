@@ -21,7 +21,7 @@
     <Window.DataContext>
         <vm:MainView/>
     </Window.DataContext>
-    
+
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="25"/>
@@ -50,6 +50,10 @@
         <GroupBox Grid.Row="1"
                       Header="Параметры">
             <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="197*"/>
+                    <ColumnDefinition Width="53*"/>
+                </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="30"/>
                     <RowDefinition Height="30"/>
@@ -60,45 +64,42 @@
                     <RowDefinition Height="35"/>
                 </Grid.RowDefinitions>
                 <TextBox Grid.Row="0"
-                         Margin="0,2.5"
+                         Margin="0,2,0,2"
                          Background="Gray"
                          ToolTip="Количество элементов (от 1 до 999999)"
                          IsEnabled="{Binding CanSort}"
-                         Text="{Binding Count}"/>
+                         Text="{Binding Count}" Grid.ColumnSpan="2"/>
                 <ComboBox Grid.Row="1"
-                          Margin="0,2.5"
                           Background="Gray"
                           ToolTip="Тип элементов"
                           IsEnabled="{Binding CanSort}"
                           ItemsSource="{Binding GetDataTypes}"
-                          SelectedItem="{Binding CurrentDataType}">
-                </ComboBox>
+                          SelectedItem="{Binding CurrentDataType}" Grid.ColumnSpan="2"/>
                 <Button Grid.Row="2"
-                        Margin="0,2.5"
+                        Margin="0,2,0,1"
                         Content="Генерация"
                         IsEnabled="{Binding CanSort}"
-                        Command="{Binding GenerateCommand}"/>
+                        Command="{Binding GenerateCommand}" Grid.ColumnSpan="2"/>
                 <Border Grid.Row="3"
                         Margin="0,5,0,0"
                         BorderThickness="3"
-                        BorderBrush="DarkGray">
+                        BorderBrush="DarkGray" Grid.ColumnSpan="2">
                     <ListBox MinHeight="150"
                              Background="SlateGray"
                              ItemsSource="{Binding Values}"/>
                 </Border>
                 <ProgressBar Grid.Row="4"
-                             Margin="5,2,5,8"
-                             Value="{Binding Progress}" />
+                             Margin="5,2,4,8"
+                             Value="{Binding Progress}" Grid.ColumnSpan="2" />
                 <ComboBox Grid.Row="5"
-                          Margin="0,2.5"
                           Background="Gray"
                           ToolTip="Способ сортировки"
                           IsEnabled="{Binding CanSort}"
                           ItemsSource="{Binding GetSortTypes}"
-                          SelectedItem="{Binding CurrentSortType}"/>
+                          SelectedItem="{Binding CurrentSortType}" Grid.ColumnSpan="2"/>
                 <Button Grid.Row="6"
-                        Margin="0,2.5"
-                        Command="{Binding SortStopCommand}">
+                        Margin="0,3,0,0"
+                        Command="{Binding SortStopCommand}" Grid.ColumnSpan="2">
                     <Button.Content>
                         <DockPanel>
                             <TextBlock>
