@@ -183,6 +183,8 @@ namespace AkopovKursov_var29.ViewModels
 
             CanSort = false;
             int swapCount = 0;
+            Stopwatch stopwatch = new Stopwatch();
+            stopwatch.Start();
             switch (CurrentSortType)
             {
                 case SortTypes.Расчёска:
@@ -194,6 +196,7 @@ namespace AkopovKursov_var29.ViewModels
                 default:
                     break;
             }
+            stopwatch.Stop();
             var val = new IComparable[0];
             Values = val.Concat(Values).ToArray();
             CanSort = true;
@@ -202,7 +205,7 @@ namespace AkopovKursov_var29.ViewModels
             Loger.MessageLog("Данные после сортировки:\n");
             Loger.LogTable(Values, 10, 10);
             Loger.LogIndent(1, 10 * 10, '=');
-            Loger.MessageLog("Количество перестановок: " + swapCount);
+            Loger.MessageLog("Количество перестановок: " + swapCount + "\tвремя: " + stopwatch.Elapsed.ToString());
             Loger.LogIndent(3, 0, ' ');
         }
 
