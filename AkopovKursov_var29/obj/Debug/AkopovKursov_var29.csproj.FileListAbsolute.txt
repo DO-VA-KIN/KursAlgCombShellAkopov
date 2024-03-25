@@ -140,3 +140,14 @@ B:\Projects\university\Wpf\Akopov\AkopovKursov_var29\AkopovKursov_var29\obj\Debu
 B:\Projects\university\Wpf\Akopov\AkopovKursov_var29\AkopovKursov_var29\obj\Debug\AkopovKursov_var29.csproj.CopyComplete
 B:\Projects\university\Wpf\Akopov\AkopovKursov_var29\AkopovKursov_var29\obj\Debug\AkopovKursov_var29.exe
 B:\Projects\university\Wpf\Akopov\AkopovKursov_var29\AkopovKursov_var29\obj\Debug\AkopovKursov_var29.pdb
+B:\Projects\university\Wpf\Akopov\AkopovKursov_var29\AkopovKursov_var29\bin\Debug\Microsoft.Bcl.AsyncInterfaces.dll
+B:\Projects\university\Wpf\Akopov\AkopovKursov_var29\AkopovKursov_var29\bin\Debug\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+B:\Projects\university\Wpf\Akopov\AkopovKursov_var29\AkopovKursov_var29\bin\Debug\Prism.Container.Abstractions.dll
+B:\Projects\university\Wpf\Akopov\AkopovKursov_var29\AkopovKursov_var29\bin\Debug\Prism.Events.dll
+B:\Projects\university\Wpf\Akopov\AkopovKursov_var29\AkopovKursov_var29\bin\Debug\System.Threading.Tasks.Extensions.dll
+B:\Projects\university\Wpf\Akopov\AkopovKursov_var29\AkopovKursov_var29\bin\Debug\Microsoft.Bcl.AsyncInterfaces.xml
+B:\Projects\university\Wpf\Akopov\AkopovKursov_var29\AkopovKursov_var29\bin\Debug\Microsoft.Extensions.DependencyInjection.Abstractions.xml
+B:\Projects\university\Wpf\Akopov\AkopovKursov_var29\AkopovKursov_var29\bin\Debug\Prism.Container.Abstractions.pdb
+B:\Projects\university\Wpf\Akopov\AkopovKursov_var29\AkopovKursov_var29\bin\Debug\Prism.Events.pdb
+B:\Projects\university\Wpf\Akopov\AkopovKursov_var29\AkopovKursov_var29\bin\Debug\Prism.Events.xml
+B:\Projects\university\Wpf\Akopov\AkopovKursov_var29\AkopovKursov_var29\bin\Debug\System.Threading.Tasks.Extensions.xml

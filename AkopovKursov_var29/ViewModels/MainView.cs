@@ -10,12 +10,28 @@ using LiveCharts.Wpf;
 using System.Threading.Tasks;
 using System.IO;
 using System.Diagnostics;
+using System.Windows;
+using Prism.Dialogs;
 
 namespace AkopovKursov_var29.ViewModels
 {
     internal class MainView : BindableBase
     {
         #region переменные
+        /// <summary>
+        /// Режим(размерность) окна
+        /// </summary>
+        private WindowState _currentWindowState;
+        public WindowState CurrentWindowState
+        {
+            get => _currentWindowState;
+            set
+            {
+                _currentWindowState = value;
+                RaisePropertyChanged(nameof(CurrentWindowState));
+            }
+        }
+
         private bool _canSort = true;
         /// <summary>
         /// Доступность интерфейса
@@ -164,14 +180,37 @@ namespace AkopovKursov_var29.ViewModels
 
         #region Команды
         /// <summary>
+        /// Свернуть окно
+        /// </summary>
+        public DelegateCommand WindowMinimizeCommand { get; }
+        private void OnWindowMinimizeCommand() => CurrentWindowState = WindowState.Minimized;
+
+        /// <summary>
+        /// Во весь экран и обратно
+        /// </summary>
+        public DelegateCommand WindowMaximizeCommand { get; }
+        private void OnWindowMaximizeCommand()
+        {
+            if(CurrentWindowState == WindowState.Maximized)
+                CurrentWindowState = WindowState.Normal;
+            else CurrentWindowState = WindowState.Maximized;
+        }
+
+        /// <summary>
+        /// Завершение приложения
+        /// </summary>
+        public DelegateCommand WindowCloseCommand { get; }
+        private void OnWindowCloseCommand()
+        {
+            Settings.SaveSettings();
+            new Commands().ApplicationShutdown.Execute();
+        }
+
+        /// <summary>
         /// Выполнение сортировки
         /// </summary>
         public DelegateCommand SortStopCommand { get; }
-        private bool CanSortStopCommandExecute()
-        {
-            if (!CanSort) return false;
-            else return true;
-        }
+        private bool CanSortStopCommandExecute() => CanSort;
         private async void OnSortStopCommand()
         {
             if (Values.Count() < 2) return;
@@ -209,31 +248,34 @@ namespace AkopovKursov_var29.ViewModels
             Loger.LogIndent(3, 0, ' ');
         }
 
-
         /// <summary>
         /// Выполнение генерации
         /// </summary>
         public DelegateCommand GenerateCommand { get; }
-        private void OnGenerateCommand()
+        private async void OnGenerateCommand()
         {
+            CanSort = false;
             switch (CurrentDataType)
             {                
                 case DataTypes.целые:
-                    Values = new Generator().GenerateInts(Count);
+                    await Task.Run(() => Values = new Generator().GenerateInts(Count));
                     break;
                 case DataTypes.дробные:
-                    Values = new Generator().GenerateDoubles(Count);
+                    await Task.Run(() => Values = new Generator().GenerateDoubles(Count));
                     break;
                 case DataTypes.строки:
-                     Values = new Generator().GenerateStrings(Count);
+                    await Task.Run(() => Values = new Generator().GenerateStrings(Count));
                     break;
                 default:
                     break;
             }
+            CanSort = true;
             Progress = 0;
         }
 
-
+        /// <summary>
+        /// Открыть лог
+        /// </summary>
         public DelegateCommand OpenLogCommand { get; }
         private void OnOpenLogCommand()
         {
@@ -252,11 +294,11 @@ namespace AkopovKursov_var29.ViewModels
             catch { }
         }
 
+        /// <summary>
+        /// Очистить лог
+        /// </summary>
         public DelegateCommand DeleteLogCommand { get; }
-        private void OnDeleteLogCommand()
-        {
-            Loger.ClearLog();
-        }
+        private void OnDeleteLogCommand() => Loger.ClearLog(); 
         #endregion
 
 
@@ -266,6 +308,10 @@ namespace AkopovKursov_var29.ViewModels
         {
             Settings.Initialize();//иницализируем настройки
             Sorter.ReportProgress = (int progress) => Progress = progress;//Связываем прогресс с классом сортировки
+
+            WindowMinimizeCommand = new DelegateCommand(OnWindowMinimizeCommand);//привязываем кнопку свернуть окно
+            WindowMaximizeCommand = new DelegateCommand(OnWindowMaximizeCommand);//привязываем кнопку развернуть окно
+            WindowCloseCommand = new DelegateCommand(OnWindowCloseCommand);//привязываем кнопку закрытия окна
             SortStopCommand = new DelegateCommand(OnSortStopCommand, CanSortStopCommandExecute);//привязываем кнопку сортировки
             GenerateCommand = new DelegateCommand(OnGenerateCommand);//привязываем кнопку генерации
             OpenLogCommand = new DelegateCommand(OnOpenLogCommand);//привязываем меню открыть лог
